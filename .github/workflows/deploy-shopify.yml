@@ -27,7 +27,7 @@ jobs:
           npm install -g @shopify/cli
 
           # Authenticate with Shopify using your API key and password
-          shopify login -a $SHOPIFY_API_KEY -p $SHOPIFY_PASSWORD
+          shopify login -a ${{ secrets.SHOPIFY_API_KEY }} -p ${{ secrets.SHOPIFY_PASSWORD }}
 
           # Set the Shopify store URL
           shopify target add $SHOPIFY_STORE_URL
