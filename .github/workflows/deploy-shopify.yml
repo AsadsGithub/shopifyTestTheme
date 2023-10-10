@@ -16,19 +16,25 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Specify Node.js version 16
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
       - name: Deploy to Shopify
         run: |
-          # Use Shopify CLI or API to deploy your theme
-          # Example using Shopify CLI:
-          # shopify theme deploy
+          # Install the Shopify CLI if not already installed
+          npm install -g @shopify/cli
 
-          # Replace this with the actual deployment command
+          # Authenticate with Shopify using your API key and password
+          shopify login -a $SHOPIFY_API_KEY -p $SHOPIFY_PASSWORD
 
+          # Set the Shopify store URL
+          shopify target add $SHOPIFY_STORE_URL
+
+          # Deploy your theme
+          shopify theme deploy 
+          
         env:
           SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
           SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
