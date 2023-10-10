@@ -27,13 +27,14 @@ jobs:
           npm install -g @shopify/cli
 
           # Authenticate with Shopify using your API key and password
-          shopify login -a ${{ secrets.SHOPIFY_API_KEY }} -p ${{ secrets.SHOPIFY_PASSWORD }}
+
+          shopify theme deploy --password ${{ secrets.SHOPIFY_PASSWORD }} --store ${{ secrets.SHOPIFY_STORE_URL }} --apikey ${{ secrets.SHOPIFY_API_KEY }}
 
           # Set the Shopify store URL
-          shopify target add ${{ secrets.SHOPIFY_STORE_URL }}
+          # shopify target add ${{ secrets.SHOPIFY_STORE_URL }}
 
           # Deploy your theme
-          shopify theme deploy 
+          # shopify theme deploy 
           
         env:
           SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
