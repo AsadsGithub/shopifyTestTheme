@@ -30,7 +30,7 @@ jobs:
           shopify login -a ${{ secrets.SHOPIFY_API_KEY }} -p ${{ secrets.SHOPIFY_PASSWORD }}
 
           # Set the Shopify store URL
-          shopify target add $SHOPIFY_STORE_URL
+          shopify target add ${{ secrets.SHOPIFY_STORE_URL }}
 
           # Deploy your theme
           shopify theme deploy 
