@@ -23,13 +23,8 @@ jobs:
 
       - name: Deploy to Shopify
         run: |
-          # Install the Shopify CLI if not already installed
-          npm install -g @shopify/cli
+          shopify theme deploy --password ${{ secrets.SHOPIFY_PASSWORD }} --store ${{ secrets.SHOPIFY_STORE_URL }} --apikey ${{ secrets.SHOPIFY_API_KEY }}
 
-          # Set up environment variables for Shopify authentication
-          export SHOPIFY_API_KEY="${{ secrets.SHOPIFY_API_KEY }}"
-          export SHOPIFY_PASSWORD="${{ secrets.SHOPIFY_PASSWORD }}"
-          export SHOPIFY_STORE_URL="${{ secrets.SHOPIFY_STORE_URL }}"
 
           # Deploy your theme using environment variables
           shopify theme deploy --env=production
